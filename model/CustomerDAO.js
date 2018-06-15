@@ -1,7 +1,7 @@
 var MongoClient  = require('mongodb').MongoClient;;
 
 var url = "mongodb://localhost:27017/mydb";
-var detail;
+var userDetails;
 module.exports.createCust = function (custID, custName,branch,acctype) {
   MongoClient.connect(url, function(err, customerdb) {
     if (err) throw err;
@@ -18,32 +18,54 @@ module.exports.createCust = function (custID, custName,branch,acctype) {
 }
 
 
-module.exports.getCustDetail = function (branchName) {
+ function initialize (branchName) {
     var custdetails;
-MongoClient.connect(url, function(err, customerdb) {
-  if (err) throw err;
-  var dbo = customerdb.db("custDb");
-  var query = { BranchName: branchName };
-  var detail ="";
-  //console.log(dbo.collection("customers").find(query).query);
- 
-  var array=dbo.collection("customers").find(query).toArray(function(err, result) {
-    if (err) throw err;
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    customerdb.close();
-    //console.log(result);
-    detail=result;
-    console.log(detail);
-    return result;
-        
-  });
- console.log(array);
- //custdetails=detail;
- 
-  //return detail;
-});
-//console.log(detail);
+
+    return new Promise(function(resolve, reject) {
+      // Do async job
+      console.log('inside promise');
+      MongoClient.connect(url, function(err, customerdb) {
+        if (err) throw err;
+        var dbo = customerdb.db("custDb");
+        var query = { BranchName: branchName };
+         //console.log("query"+query);
+       
+        dbo.collection("customers").find(query).toArray(function(err, result) {
+          if (err) { console.log("rejected"); 
+          reject(err);
+        } else {
+          //console.log(result);
+          resolve(result);
+      }
+         
+          customerdb.close();
+          
+              
+        });
+       
+      });
+      //console.log(detail);
+       
+    })
+
+
 }
+
+
+module.exports.getCustDetail = function (branchName) {
+  console.log("inside getcust");
+  var initializePromise = initialize(branchName);
+  initializePromise.then(function(result) {
+      userDetails = result;
+      console.log("Initialized user details");
+     // console.log(userDetails);
+      return userDetails;
+  }, function(err) {
+      console.log(err);
+  })
+  
+}
+
 
 module.exports.updateCustDetail = function (custID,custName,brnchName) {
 MongoClient.connect(url, function(err, customerdb) {
@@ -73,7 +95,4 @@ MongoClient.connect(url, function(err, customerdb) {
 });   
 }
 
- function Test(branchName) {
-  return "world";
- }
-console.log(Test("bihar"));
+ 
