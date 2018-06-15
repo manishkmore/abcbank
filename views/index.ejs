@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>  
+    </head>
+    <body>
+        <table>
+            <tbody>
+            <tr>
+            <td>getCustomerList</td>
+            <td><%=data%></td>
+            </tr>            
+            <tr>
+            <td>customer id</td>
+            <td>customer name</td>
+            <td>branch name</td>
+            <td>account type</td>
+            </tr>
+            <% cList.forEach(function(item){ %>
+                <% if(item !=null) { %>
+                <tr>
+                <td><%= item.custId%></td>
+                <td><%=item.custName %></td>
+                <td><%=item.branchName %></td>
+                <td><%=item.accountType %></td>
+                </tr>
+                <% } %>
+                <%});%>              
+            </tbody>
+        </table>
+    </body>
+</html>
