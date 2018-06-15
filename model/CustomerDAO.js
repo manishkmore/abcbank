@@ -47,6 +47,7 @@ MongoClient.connect(url, function(err, customerdb) {
 //console.log(detail);
 }
 
+
 module.exports.updateCustDetail = function (custID,custName,brnchName) {
 MongoClient.connect(url, function(err, customerdb) {
   if (err) throw err;
