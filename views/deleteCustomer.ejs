@@ -11,9 +11,9 @@
     </head>
     <body>
             <h1>WELCOME to the best bank in the World ! :-)</h1>
-            <h2>To add customer data enter all information and hit Submit</h2>
+            <h2>To delete the customer data enter customer id and hit Submit</h2>
     
-        <form id="addCustomer-form" method="POST" action="/aCustomer" >
+        <form id="deleteCustomer-form" method="POST" action="/dCustomer" >
         <table>
             <tbody>
             <tr>
@@ -22,12 +22,6 @@
             <tr>
             <td><label>customer id</label></td>
             <td><input type="text" name="custId" value="<%= cList.custId %>"></td>
-            <td><label>customer name</label></td>
-            <td><input type="text" name="custName" value="<%= cList.custName %>"></td>
-            <td><label>branch name</label></td>
-            <td><input type="text" name="branchName" value="<%= cList.branchName %>"></td>
-            <td><label>account type</label></td>
-            <td><input type="text" name="accountType" value="<%= cList.accountType %>"></td>
             </tr>
             <tr>
                     <td><input type="submit" value="Submit" ></td>

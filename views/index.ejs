@@ -2,13 +2,19 @@
 <html>
     <head>
             <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>  
+            <style>
+                body {background-color: skyBlue}
+                h1 {font-family : "verdana"; font-size:38px}
+                table{background-color: white; border-color: black}
+            </style>
     </head>
     <body>
+        <h1>WELCOME to the best bank in the World ! :-)</h1>
+        <h2>To fetch customer data by branch name, please add ?branchName="branchName" to the url</h2>
         <table>
             <tbody>
             <tr>
-            <td>getCustomerList</td>
-            <td><%=data%></td>
+            <td font-size: 30px>List of All Customers</td>
             </tr>            
             <tr>
             <td>customer id</td>
@@ -19,10 +25,10 @@
             <% cList.forEach(function(item){ %>
                 <% if(item !=null) { %>
                 <tr>
-                <td><%= item.custId%></td>
-                <td><%=item.custName %></td>
-                <td><%=item.branchName %></td>
-                <td><%=item.accountType %></td>
+                <td><%= item.CustomerID%></td>
+                <td><%=item.customerName %></td>
+                <td><%=item.BranchName %></td>
+                <td><%=item.Accounttype %></td>
                 </tr>
                 <% } %>
                 <%});%>              
