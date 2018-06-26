@@ -7,10 +7,21 @@ var express = require('express');
 var controller = express();
 controller.set('view engine','ejs');
 var bodyParser = require('body-parser');
+var callAssistant = require('../watson/assistant');
 
 // used to create urlEncoding object used to parse html and create req.body object
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
+var readline = require('readline-sync');
+
+//while(true){
+//    var name = readline.question('what is your next question?')
+//    readline.prompt;
+        //if (i === 'right') readline.close();
+        var name = callAssistant.callAssistant();
+        //console.log(name);
+//        if(name === 'exit')  {break;}
+//}
 
 // Used to get Customer List using branchName using default route
 controller.get('/',function(req,res){
@@ -97,7 +108,8 @@ controller.post('/dCustomer',urlencodedParser, function(req,res){
 
 });
 
-
+/*
 controller.listen(8080,function(){
 console.log('listening on port 8080');
 });
+*/

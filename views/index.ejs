@@ -9,30 +9,11 @@
             </style>
     </head>
     <body>
-        <h1>WELCOME to the best bank in the World ! :-)</h1>
+        <h1>WELCOME to the best bank in the Worlds ! :-)</h1>
         <h2>To fetch customer data by branch name, please add ?branchName="branchName" to the url</h2>
-        <table>
-            <tbody>
-            <tr>
-            <td font-size: 30px>List of All Customers</td>
-            </tr>            
-            <tr>
-            <td>customer id</td>
-            <td>customer name</td>
-            <td>branch name</td>
-            <td>account type</td>
-            </tr>
-            <% cList.forEach(function(item){ %>
-                <% if(item !=null) { %>
-                <tr>
-                <td><%= item.CustomerID%></td>
-                <td><%=item.customerName %></td>
-                <td><%=item.BranchName %></td>
-                <td><%=item.Accounttype %></td>
-                </tr>
-                <% } %>
-                <%});%>              
-            </tbody>
-        </table>
+        <frameset cols="50%,50%">
+                <frame src="addCustomer.ejs"  scrolling="no">
+                <frame src="getCustomer.ejs">
+        </frameset> 
     </body>
 </html>

@@ -6,11 +6,14 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "prompt-sync": "^4.1.6",
+    "readline-sync": "^1.4.9",
+    "watson-developer-cloud": "^3.5.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./controller/controller.js"
   },
   "repository": {
     "type": "git",
